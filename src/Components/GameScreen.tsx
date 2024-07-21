@@ -1,7 +1,13 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useSelector, useDispatch } from 'react-redux';
+import { AppDispatch, RootState } from '../store';
 
 const GameScreen = () => {
-    const [animationSpeed, setAnimationSpeed] = useState(6); // Velocità di default
+
+    const speed = useSelector((state: RootState) => state.options.speed);
+    // const gravity = useSelector((state: RootState) => state.options.gravity);
+    const dispatch = useDispatch<AppDispatch>();
+
 
     useEffect(() => {
         const images = document.querySelectorAll('.backgroundImg');
@@ -14,9 +20,9 @@ const GameScreen = () => {
             roadImage.classList.add("movingRoad");
         }
 
-        document.documentElement.style.setProperty('--animation-speed', `${animationSpeed}s`);
-        document.documentElement.style.setProperty('--road-animation-speed', `${animationSpeed * 1.5}s`);
-    }, [animationSpeed]);
+        document.documentElement.style.setProperty('--animation-speed', `${speed}s`);
+        document.documentElement.style.setProperty('--road-animation-speed', `${speed * 1.5}s`);
+    }, [speed]);
 
     return (
         <div id="game-screen">
