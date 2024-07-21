@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import { useSelector, useDispatch } from 'react-redux';
-import { AppDispatch, RootState } from '../store';
+import { useSelector } from 'react-redux';
+import {  RootState } from '../store';
 
 const GameScreen = () => {
 
