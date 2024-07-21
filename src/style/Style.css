@@ -1,4 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
+
+:root {
+    --animation-speed: 6s; 
+    --road-animation-speed: 9s; 
+}
+
 body{
     background-color: black !important;
     color: white;
@@ -34,6 +40,7 @@ html{
 }
 
 #background2{
+    left: 100%;
 }
 
 .movingRoad{
@@ -43,8 +50,6 @@ html{
     left: 0;
     height: 17%;
 }
-
-
 
 #movingRoad2{
     left: 99.9%;
@@ -63,9 +68,9 @@ html{
 }
 
 .movingBackground{
-    animation: slide 6s linear infinite; 
+    animation: slide var(--animation-speed) linear infinite;
 }
 
 .movingRoad{
-    animation: slide 9s linear infinite;
+    animation: slide var(--road-animation-speed) linear infinite;
 }
