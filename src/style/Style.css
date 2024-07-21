@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
+body{
+    background-color: black !important;
+    color: white;
+    font-family: 'Pixelify Sans', sans-serif;
+}
+
+h1{
+    font-size: 48px;
+}
+
+html{
+    display: flex;
+    flex-direction: column;
+}
+
+#titolo{
+    margin: 0 auto;
+}
+
+.backgroundImg{
+    height: 100%; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.movingRoad{
+    z-index: 1;
+    position: absolute;
+    top: 90%;
+    left: 0;
+    height: 17%;
+}
+
+#background2{
+    left: 99.9%;
+}
+
+#movingRoad2{
+    left: 99.9%;
+}
+
+#frame{
+    margin: 10vh auto;
+    height: 65vh;
+    width: 65vh;
+    background-color: white;
+    -webkit-box-shadow: 15px 15px 48px -11px rgba(255,255,255,1);
+    -moz-box-shadow: 15px 15px 48px -11px rgba(255,255,255,1);
+    box-shadow: 15px 15px 48px -11px rgba(255,255,255,1);
+    overflow: hidden;
+    position: relative; 
+}
+
+.movingBackground{
+    animation: slide 6s linear infinite; 
+}
+
+.movingRoad{
+    animation: slide 12s linear infinite;
+}
