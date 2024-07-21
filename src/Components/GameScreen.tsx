@@ -6,7 +6,6 @@ const GameScreen = () => {
 
     const speed = useSelector((state: RootState) => state.options.speed);
     // const gravity = useSelector((state: RootState) => state.options.gravity);
-    const dispatch = useDispatch<AppDispatch>();
 
 
     useEffect(() => {
@@ -20,8 +19,8 @@ const GameScreen = () => {
             roadImage.classList.add("movingRoad");
         }
 
-        document.documentElement.style.setProperty('--animation-speed', `${speed}s`);
-        document.documentElement.style.setProperty('--road-animation-speed', `${speed * 1.5}s`);
+        document.documentElement.style.setProperty('--animation-speed', `${(speed*2)-10}s`);
+        document.documentElement.style.setProperty('--road-animation-speed', `${(speed*2)-5}s`);
     }, [speed]);
 
     return (

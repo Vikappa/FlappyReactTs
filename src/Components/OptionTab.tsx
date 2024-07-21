@@ -8,11 +8,11 @@ const OptionTab = () =>{
     const dispatch = useDispatch<AppDispatch>();
 
     const increaseSpeed = () => {
-        dispatch(setSpeed(speed + 1));
+        dispatch(setSpeed(speed - 1));
     };
 
     const decreaseSpeed = () => {
-        dispatch(setSpeed(speed - 1));
+        dispatch(setSpeed(speed + 1));
     };
 
     const increaseGravity = () => {
@@ -33,7 +33,7 @@ const OptionTab = () =>{
             <div className='opt-container'>
             <p>Speed:</p>
             <button onClick={decreaseSpeed} className='option-button'>-</button>
-                <p>{speed}</p>
+                <p>{13-speed}</p>
             <button onClick={increaseSpeed} className='option-button'>+</button>
             </div>
 

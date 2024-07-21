@@ -6,7 +6,7 @@ export interface InitialStateInterface {
 }
 
 const initialState: InitialStateInterface = {
-  speed: 6,
+  speed: 8,
   gravity: 1,
 };
 
