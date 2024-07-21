@@ -18,14 +18,22 @@ html{
     margin: 0 auto;
 }
 
-.backgroundImg{
+#background1,
+#background2 {
     height: 100%; 
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 101%;
     height: 100%;
     z-index: 0;
+}
+
+#background2 {
+    left: 100%;
+}
+
+#background2{
 }
 
 .movingRoad{
@@ -36,9 +44,7 @@ html{
     height: 17%;
 }
 
-#background2{
-    left: 99.9%;
-}
+
 
 #movingRoad2{
     left: 99.9%;
@@ -61,5 +67,5 @@ html{
 }
 
 .movingRoad{
-    animation: slide 12s linear infinite;
+    animation: slide 9s linear infinite;
 }
