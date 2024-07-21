@@ -16,8 +16,8 @@ const optionsSlice = createSlice({
   reducers: {
     setSpeed: (state, action: PayloadAction<number>) => {
       state.speed = action.payload;
-      if (state.speed < 2) {
-        state.speed = 2;
+      if (state.speed < 6) {
+        state.speed = 6;
       }
       if (state.speed > 10) {
         state.speed = 10;
