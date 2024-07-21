@@ -5,14 +5,14 @@ export interface positionPayload {
   Y: number;
 }
 
-export interface InitialStateInterface {
+export interface InitialBirdPositionState {
   X: number;
   Y: number;
 }
 
-const initialState: InitialStateInterface = {
-  X: 8,
-  Y: 1,
+const initialState: InitialBirdPositionState = {
+  X: 0,
+  Y: 100,
 };
 
 const birdSlice = createSlice({

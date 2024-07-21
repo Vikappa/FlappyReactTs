@@ -1,8 +1,12 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import optionsReducer, { InitialStateInterface } from '../reducers/optionsSlice'; 
+import birdReducer, { InitialBirdPositionState } from '../reducers/birdSlice';
+import flapReducer, { InitialFlapState } from '../reducers/flapReducer';
 
 const rootReducer = combineReducers({
   options: optionsReducer,
+  bird: birdReducer,
+  flapflap: flapReducer,
 });
 
 const store = configureStore({
@@ -11,7 +15,9 @@ const store = configureStore({
 
 export type AppDispatch = typeof store.dispatch;
 export type RootState = {
-  options: InitialStateInterface;
+  options: InitialStateInterface,
+  bird: InitialBirdPositionState,
+  flapflap: InitialFlapState
 };
 
 export default store;
