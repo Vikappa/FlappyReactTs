@@ -16,8 +16,22 @@ const optionsSlice = createSlice({
   reducers: {
     setSpeed: (state, action: PayloadAction<number>) => {
       state.speed = action.payload;
+      if (state.speed < 2) {
+        state.speed = 2;
+      }
+      if (state.speed > 10) {
+        state.speed = 10;
+      }
     },
     setGravity: (state, action: PayloadAction<number>) => {
+      if(action.payload < 0.5){
+        state.gravity = 0.5;
+        return;
+      }
+      if(action.payload > 3){
+        state.gravity = 3;
+        return;
+      }
       state.gravity = action.payload;
     },
     reset: (state) => {
