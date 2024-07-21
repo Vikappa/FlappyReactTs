@@ -1,30 +1,27 @@
-# React + TypeScript + Vite
+<p align="center" style="margin-top: 20px;">
+  <img src="./public/assets/share/typescript-plain-icon-1024x1024-1aup809i-4203452109.png" width="200">
+</p>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Flappy Bird Clone
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+[![Version](https://img.shields.io/badge/version-1.0.0-blue)](https://imgshields.io)
+[![React](https://img.shields.io/badge/react-17.0.2-blue?logo=react&logoColor=white)](https://imgshields.io)
+[![Vite](https://img.shields.io/badge/vite-2.5.10-purple?logo=vite&logoColor=white)](https://imgshields.io)
+[![Redux](https://img.shields.io/badge/redux-4.1.2-purple?logo=redux&logoColor=white)](https://imgshields.io)
+[![TypeScript](https://img.shields.io/badge/typescript-4.4.4-blue?logo=typescript&logoColor=white)](https://imgshields.io)
 
-## Expanding the ESLint configuration
+## Perchè?
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+<p style="font-weight: bold; ">Vincenzo?! Il terzo clone di FlappyBird??</p>
+<p>Che dire amici e amiche, ogni 6 mesi faccio un clone di FlappyBird e non mi piace nemmeno come gioco. Li faccio per allenarmi a cambiare linguaggio. E poi questo è i gran lunga la versione più ambiziosa: React, Vite, TypeScript, Redux. Un gigantesco overkill per un applicazione così semplice, ma il punto non era giocare a FlappyBird ma giocare a configurare l'esportazione dei tipi del redux Store</p>
+## Funzionalità
 
-- Configure the top-level `parserOptions` property like this:
+- **Grafica in stile pixel art**: Grafica pixel art animata con css e keyframs.
+- **Sistema di punteggio**: Guadagna punti passando attraverso gli ostacoli e salva il tuo record in un database 
+- **Responsiveness**: Ottimizzato per dispositivi mobili e tablet.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json', './tsconfig.app.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+
+
+<a href="https://flappy-react-ts.vercel.app/">Provalo!</a>
