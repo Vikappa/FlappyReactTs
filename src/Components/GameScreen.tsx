@@ -20,8 +20,8 @@ const GameScreen = () =>{
         <div id="game-screen">
         <img src="/assets/img/background.png" className="backgroundImg" alt="background1" id="background1"/>
         <img src="/assets/img/background.png" className="backgroundImg" alt="background2" id="background2"/>
-        <img src='../../public/assets/img/154256.png' alt="road" className="movingRoad" id="movingRoad1" />
-        <img src='../../public/assets/img/154256.png' alt="road" className="movingRoad" id="movingRoad2"/>
+        <img src='/assets/img/154256.png' alt="road" className="movingRoad" id="movingRoad1" />
+        <img src='/assets/img/154256.png' alt="road" className="movingRoad" id="movingRoad2"/>
         </div>
     )
 }
