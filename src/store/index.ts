@@ -14,7 +14,7 @@ const store = configureStore({
 });
 
 export type AppDispatch = typeof store.dispatch;
-export type RootState = {
+export type RootType = {
   options: InitialStateInterface,
   bird: InitialBirdPositionState,
   flapflap: InitialFlapState

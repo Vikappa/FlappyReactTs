@@ -69,6 +69,10 @@ html{
     border: 1px solid transparent;
 }
 
+.option-button, .optionTab h5, .optionButton p, .opt{
+    user-select: none;
+}
+
 .option-button:hover{
     border: 0;
     background-color: white;

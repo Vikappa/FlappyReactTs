@@ -1,12 +1,11 @@
 import { useEffect } from "react";
 import { useSelector } from 'react-redux';
-import {  RootState } from '../store';
+import {  RootType } from '../store';
 
 const GameScreen = () => {
 
-    const speed = useSelector((state: RootState) => state.options.speed);
-    // const gravity = useSelector((state: RootState) => state.options.gravity);
-
+    const speed = useSelector((state: RootType) => state.options.speed);
+    const gravity = useSelector((state: RootType) => state.options.gravity);
 
     useEffect(() => {
         const images = document.querySelectorAll('.backgroundImg');
@@ -25,6 +24,7 @@ const GameScreen = () => {
 
     return (
         <div id="game-screen">
+            
             <img src="/assets/img/background.png" className="backgroundImg" alt="background1" id="background1" />
             <img src="/assets/img/background.png" className="backgroundImg" alt="background2" id="background2" />
             <img src='/assets/img/154256.png' alt="road" className="movingRoad" id="movingRoad1" />
