@@ -29,34 +29,44 @@ const Frame = () => {
 
     const handleFlapUp = () => {
       if(!gameover && storedX >= frameX/5)
-      dispatch(setPosition({X:storedX, Y:storedY-flapPower*2}))
+      dispatch(setPosition({X:storedX, Y:storedY-flapPower*2-gravity}))
          dispatch(flapUp())
     }
 
     useEffect(() => {
-      console.log('flappower', flapPower, 'gravity', gravity)
 
-    }, [points])
-    
+    if(storedX <= frameX/10){
 
-    useEffect(() => {
+      dispatch(setPosition({X:storedX+speed/2, Y:storedY+gravity}))
 
-    if(storedX <= frameX/5){
-      dispatch(setPosition({X:storedX+speed/5, Y:storedY}))
     } else {
-      if(storedY >= frameY*8/10){
-        dispatch(setGameover())
-        return
-      } else {
-        if(flap){
-          dispatch(setPosition({X:storedX, Y:storedY-flapPower}))
-        } else {
-          dispatch(setPosition({X:storedX, Y:storedY+gravity-flapPower}))
-        }
-        dispatch(flapDown(gravity/4))
 
+      if(storedX <= frameX/5){
+
+        dispatch(setPosition({X:storedX+speed/3, Y:storedY+gravity}))
+
+      } else {
+
+        if(storedY >= frameY*8/10){
+
+          dispatch(setGameover())
+          return
+
+        } else {
+
+          if(flap){
+            dispatch(setPosition({X:storedX, Y:storedY-flapPower}))
+          } else {
+            dispatch(setPosition({X:storedX, Y:storedY+gravity-flapPower}))
+          }
+
+          dispatch(flapDown(gravity/3))
+        }
       }
+
     }
+
+
       const timer = setTimeout(() => {
         dispatch(addPoints(speed/gravity))
       }, 20)

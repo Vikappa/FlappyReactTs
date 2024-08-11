@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { stat } from 'fs';
 
 export interface flapInterface {
   flap: boolean;
@@ -48,6 +49,8 @@ const birdSlice = createSlice({
     },
     setRestart(state){
         state.gameover = false;
+        state.flap = false;
+        state.flapPower = 0;
     }
   }
 })
