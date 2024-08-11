@@ -1,10 +1,10 @@
 import { setGravity, setSpeed } from '../reducers/optionsSlice';
-import { AppDispatch, RootState } from '../store';
+import { AppDispatch, RootType } from '../store';
 import { useSelector, useDispatch } from 'react-redux';
 
 const OptionTab = () =>{
-    const speed = useSelector((state: RootState) => state.options.speed);
-    const gravity = useSelector((state: RootState) => state.options.gravity);
+    const speed = useSelector((state: RootType) => state.options.speed);
+    const gravity = useSelector((state: RootType) => state.options.gravity);
     const dispatch = useDispatch<AppDispatch>();
 
     const increaseSpeed = () => {

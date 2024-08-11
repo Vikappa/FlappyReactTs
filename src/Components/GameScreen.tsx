@@ -5,7 +5,6 @@ import {  RootType } from '../store';
 const GameScreen = ({ handleFlapUp }: { handleFlapUp: () => void }) => {
 
     const speed = useSelector((state: RootType) => state.options.speed);
-    const gravity = useSelector((state: RootType) => state.options.gravity);
 
     useEffect(() => {
         const images = document.querySelectorAll('.backgroundImg');

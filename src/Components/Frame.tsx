@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { addPoints } from "../reducers/optionsSlice";
 import { useEffect } from "react";
 import { setPosition } from "../reducers/birdSlice";
-import { doFlap, flapDown, flapUp } from "../reducers/flapReducer";
+import { flapDown, flapUp } from "../reducers/flapReducer";
 
 const Frame = () => {
     const dispatch = useDispatch()
