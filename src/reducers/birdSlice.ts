@@ -12,7 +12,7 @@ export interface InitialBirdPositionState {
 
 const initialState: InitialBirdPositionState = {
   X: 0,
-  Y: 100,
+  Y: 220,
 };
 
 const birdSlice = createSlice({
@@ -20,8 +20,8 @@ const birdSlice = createSlice({
   initialState,
   reducers: {
     setPosition: (state, action: PayloadAction<positionPayload>) => {
-        state.Y = action.payload.X;
-        state.X = action.payload.Y;
+        state.X = action.payload.X;
+        state.Y = action.payload.Y;
     }
   },
 });

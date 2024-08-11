@@ -109,6 +109,7 @@ html{
 
 #frame{
     margin: 5vh auto;
+    margin-top: 0;
     height: 65vh;
     width: 65vh;
     background-color: white;
@@ -126,4 +127,14 @@ html{
 
 .movingRoad{
     animation: slide var(--road-animation-speed) linear infinite;
+}
+
+.pointsDisplay{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+.pointsH1{
+    color: white;
 }

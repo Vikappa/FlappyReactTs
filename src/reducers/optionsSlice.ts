@@ -3,11 +3,13 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 export interface InitialStateInterface {
   speed: number;
   gravity: number;
+  points: number;
 }
 
 const initialState: InitialStateInterface = {
   speed: 8,
   gravity: 1,
+  points: 0
 };
 
 const optionsSlice = createSlice({
@@ -38,9 +40,12 @@ const optionsSlice = createSlice({
       state.speed = 6;
       state.gravity = 1;
     },
+    addPoints: (state, action: PayloadAction<number>) => {
+      state.points += action.payload;
+    }
   },
 });
 
-export const { setSpeed, setGravity, reset } = optionsSlice.actions;
+export const { setSpeed, setGravity, reset, addPoints } = optionsSlice.actions;
 
 export default optionsSlice.reducer;
