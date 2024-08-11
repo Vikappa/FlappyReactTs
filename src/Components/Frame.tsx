@@ -28,21 +28,35 @@ const Frame = () => {
     }, [])
 
     const handleFlapUp = () => {
-      console.log('StoredX', storedX, 'StoredY', storedY, 'FrameX', frameX, 'FrameY', frameY)
+      if(!gameover && storedX >= frameX/5)
+      dispatch(setPosition({X:storedX, Y:storedY-flapPower*2}))
          dispatch(flapUp())
     }
 
     useEffect(() => {
+      console.log('flappower', flapPower, 'gravity', gravity)
 
+    }, [points])
+    
 
-    dispatch(setPosition({X:storedX, Y:storedY+speed}))
+    useEffect(() => {
 
-    if(storedY >= frameY*8/10){
-      dispatch(setGameover())
-      return
+    if(storedX <= frameX/5){
+      dispatch(setPosition({X:storedX+speed/5, Y:storedY}))
+    } else {
+      if(storedY >= frameY*8/10){
+        dispatch(setGameover())
+        return
+      } else {
+        if(flap){
+          dispatch(setPosition({X:storedX, Y:storedY-flapPower}))
+        } else {
+          dispatch(setPosition({X:storedX, Y:storedY+gravity-flapPower}))
+        }
+        dispatch(flapDown(gravity/4))
+
+      }
     }
-        
-
       const timer = setTimeout(() => {
         dispatch(addPoints(speed/gravity))
       }, 20)

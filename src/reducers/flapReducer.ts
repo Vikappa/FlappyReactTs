@@ -35,7 +35,11 @@ const birdSlice = createSlice({
       if (state.flapPower < -10) {
             state.flapPower = -10;
         }
-        if(state.flapPower == 0){
+
+      if (state.flapPower > 5) {
+        state.flapPower = 5;
+      }
+        if(state.flapPower <= 0){
         state.flap = false
         }
     },
