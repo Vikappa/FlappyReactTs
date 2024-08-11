@@ -24,12 +24,10 @@ const GameScreen = ({ handleFlapUp }: { handleFlapUp: () => void }) => {
     return (
         <div id="game-screen"
         onClick={handleFlapUp}
-        >    
-            <img src="/assets/img/background.png" className="backgroundImg" alt="background1" id="background1" />
-            <img src="/assets/img/background.png" className="backgroundImg" alt="background2" id="background2" />
-            <img src='/assets/img/154256.png' alt="road" className="movingRoad" id="movingRoad1" />
-            <img src='/assets/img/154256.png' alt="road" className="movingRoad" id="movingRoad2" />
-        </div>
+        >
+            <div className="background1"></div>    
+            <div className="background2"></div>    
+            </div>
     );
 }
 

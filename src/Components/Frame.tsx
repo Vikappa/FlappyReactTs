@@ -4,7 +4,7 @@ import GameScreen from "./GameScreen"
 import { RootType } from '../store';
 import { useDispatch } from "react-redux";
 import { addPoints } from "../reducers/optionsSlice";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { setPosition } from "../reducers/birdSlice";
 import { flapDown, flapUp, setGameover } from "../reducers/flapReducer";
 
@@ -19,36 +19,34 @@ const Frame = () => {
     const flapPower = useSelector((state:RootType)=>state.flapflap.flapPower)
     const gameover = useSelector((state:RootType)=>state.flapflap.gameover)
 
+    const [frameX, setFrameX] = useState(0)
+    const [frameY, setFrameY] = useState(0)
+
+    useEffect(() => {
+      setFrameX(document.getElementById('frame')?.offsetWidth || 0) 
+      setFrameY(document.getElementById('frame')?.offsetHeight || 0) 
+    }, [])
+
     const handleFlapUp = () => {
-      console.log('flap up')
-      if(storedX >= 90 && !gameover ){
-        dispatch(flapUp())
-      }
+      console.log('StoredX', storedX, 'StoredY', storedY, 'FrameX', frameX, 'FrameY', frameY)
+         dispatch(flapUp())
     }
 
     useEffect(() => {
 
-       if(storedX < 90){
-        dispatch(setPosition({X:storedX+(speed/12), Y:storedY})) //aggiustamenti per il rendering
-      } else {
-        if(flap){
-            dispatch(flapDown(gravity))
-            dispatch(setPosition({X:90, Y:storedY-(flapPower)}))
-        } else{
-            dispatch(setPosition({X:90, Y:storedY+((gravity*8)-flapPower) }))
-        }
-      }
 
-      if(storedY > 410){
-        dispatch(setGameover())
-        return
-      }
+    dispatch(setPosition({X:storedX, Y:storedY+speed}))
+
+    if(storedY >= frameY*8/10){
+      dispatch(setGameover())
+      return
+    }
+        
+
       const timer = setTimeout(() => {
-        dispatch(addPoints(speed/2.5*gravity))
-      }, 18)
-
+        dispatch(addPoints(speed/gravity))
+      }, 20)
       return () => clearTimeout(timer)
-
     }, [points])
     
     return(

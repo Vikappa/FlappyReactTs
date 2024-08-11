@@ -1,0 +1,27 @@
+#frame{
+    position: relative;
+    overflow: hidden;
+    margin: auto;
+    max-width: 681px;
+    height: 457px;
+}
+
+#game-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 100%;
+}
+
+.background1,
+.background2 {
+    width: 50%;
+    height: 100%;
+    float: left;
+    background-image: url(../../public/assets/img/background.png);
+    animation: animazioneBackground 4s linear infinite;
+    margin-left: -1px;
+    background-size: clip;
+    background-position: bottom;
+}

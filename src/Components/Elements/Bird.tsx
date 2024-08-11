@@ -65,7 +65,6 @@ const Bird: React.FC<BirdProps> = ({ x, y }) => {
                 />
             }
 
-
         </div>
     );
 };

@@ -26,21 +26,30 @@ const OptionTab = () =>{
 
 
     return(
-        <div id="optionTab">
+        <div id="optionTab"
+        style={{
+            userSelect: 'none',
+        }}
+        >
 
             <h5>Options</h5>
 
             <div className='opt-container'>
             <p>Speed:</p>
             <button onClick={decreaseSpeed} className='option-button'>-</button>
-                <p>{13-speed}</p>
+                <p
+                style={{
+                    userSelect: 'none',
+                }}>{13-speed}</p>
             <button onClick={increaseSpeed} className='option-button'>+</button>
             </div>
 
             <div className='opt-container'>
             <p>Gravity:</p>
             <button onClick={decreaseGravity} className='option-button'>-</button>
-                <p>{gravity}</p>
+                <p style={{
+                    userSelect: 'none',
+                }}>{gravity}</p>
             <button onClick={increaseGravity} className='option-button'>+</button>
 
             </div>

@@ -4,6 +4,7 @@ import Titolo from './Components/Titolo'
 import './style/Style.css'
 import './style/Animations.css'
 import './style/BirdStyle.css'
+import './style/frame.css'
 import PointsDisplay from './Components/PointsDisplay'
 import RestartButton from './Components/RestartButton'
 

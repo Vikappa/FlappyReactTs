@@ -5,10 +5,13 @@
     --road-animation-speed: 9s; 
 }
 
-body{
+body, html{
     background-color: black !important;
     color: white;
     font-family: 'Pixelify Sans', sans-serif;
+    max-width: 100vw !important;
+    margin: 0;
+    padding: 0;
 }
 
 h1{
@@ -24,34 +27,11 @@ html{
     margin: 0 auto;
 }
 
-.game-screen{
-    display: relative;
-}
-
-.game{
-    display: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
-#background1,
-#background2 {
-    height: 100%; 
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 101%;
-    height: 100%;
-    z-index: 0;
-}
-
 #optionTab{
     display: flex;
     flex-direction: column;
     padding: 10px;
-
+    font-size: 3rem;
 }
 
 .opt-container{
@@ -67,11 +47,12 @@ html{
     border: 0;
     background-color: transparent;
     color: white;
+    font-size: 3rem;
     border: 1px solid transparent;
 }
 
-.option-button, .optionTab h5, .optionButton p, .opt{
-    user-select: none;
+.option-button, .optionTab h5, .optionButton .p, .p,  .opt{
+    user-select: none !important;
 }
 
 .option-button:hover{
@@ -88,49 +69,6 @@ html{
     color: blue;
 }
 
-#background2 {
-    left: 100%;
-}
-
-#background2{
-    left: 100%;
-}
-
-.movingRoad{
-    z-index: 1;
-    position: absolute;
-    top: 90%;
-    left: 0;
-    height: 17%;
-}
-
-#movingRoad2{
-    left: 99.9%;
-}
-
-#frame{
-    margin: 5vh auto;
-    margin-top: 0;
-    max-width: 100vh;
-    max-height: auto;
-    height: 65vh;
-    width: 65vh;
-    background-color: white;
-    -webkit-box-shadow: 15px 15px 48px -11px rgba(255,255,255,1);
-    -moz-box-shadow: 15px 15px 48px -11px rgba(255,255,255,1);
-    box-shadow: 15px 15px 48px -11px rgba(255,255,255,1);
-    overflow: hidden;
-    position: relative; 
-}
-
-.movingBackground{
-    animation: slide var(--animation-speed) linear infinite;
-    transition: all 0.5s ease;
-}
-
-.movingRoad{
-    animation: slide var(--road-animation-speed) linear infinite;
-}
 
 .pointsDisplay{
     display: flex;
