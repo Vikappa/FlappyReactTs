@@ -26,7 +26,9 @@ const GameScreen = ({ handleFlapUp }: { handleFlapUp: () => void }) => {
         onClick={handleFlapUp}
         >
             <div className="background1"></div>    
-            <div className="background2"></div>    
+            <div className="background2"></div>  
+            <div className="movingroad1"></div>  
+            <div className="movingroad2"></div>  
             </div>
     );
 }
