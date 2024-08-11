@@ -9,6 +9,16 @@
     }
 }
 
+@keyframes animazioneBackground2 {
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(0%);
+    }
+}
+
 @keyframes rotazione {
     0% {
         transform: rotate(0deg);
