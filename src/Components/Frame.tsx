@@ -27,20 +27,6 @@ const Frame = () => {
     }
 
     useEffect(() => {
-      const handleKeyDown = (event: KeyboardEvent) => { //aggiunge un listener al document
-          if (event.code === 'Space') {
-              handleFlapUp();
-          }
-      }
-
-      window.addEventListener('keydown', handleKeyDown);
-
-      return () => {
-          window.removeEventListener('keydown', handleKeyDown) //rimuove il listener onUnmount
-      };
-  }, []);
-
-    useEffect(() => {
 
        if(storedX < 90){
         dispatch(setPosition({X:storedX+(speed/12), Y:storedY})) //aggiustamenti per il rendering
