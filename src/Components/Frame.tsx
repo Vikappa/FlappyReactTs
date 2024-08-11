@@ -7,6 +7,7 @@ import { addPoints } from "../reducers/optionsSlice";
 import { useEffect, useState } from "react";
 import { setPosition } from "../reducers/birdSlice";
 import { flapDown, flapUp, setGameover } from "../reducers/flapReducer";
+import Tube from '../Components/Elements/Tube'
 
 const Frame = () => {
     const dispatch = useDispatch()
@@ -72,12 +73,8 @@ const Frame = () => {
             dispatch(flapDown(gravity/3))
           }
         }
-
         }
-
     }
-
-
       const timer = setTimeout(() => {
 
         dispatch(addPoints(speed/gravity))
@@ -92,6 +89,7 @@ const Frame = () => {
         <div id="frame">
         <Bird x={storedX} y={storedY}/>
         <GameScreen handleFlapUp={handleFlapUp} />
+        <Tube screenHeight={frameY}/>
         </div>
     )
 }

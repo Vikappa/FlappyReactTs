@@ -1,0 +1,25 @@
+.tube-wrapper {
+    height: 100%;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+}
+
+.top-tube, .bottom-tube {
+    height: fit-content;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    z-index: 200;
+    position: absolute;
+    pointer-events: none; 
+}
+
+.bottom-tube {
+    justify-content: flex-end;
+    transform: translateY(-100%);
+}
+
+.topslice {
+    transform: scale(1.2);
+}
