@@ -42,10 +42,13 @@ const optionsSlice = createSlice({
     },
     addPoints: (state, action: PayloadAction<number>) => {
       state.points += action.payload;
+    },
+    resetPoints: (state) => {
+      state.points = 0;
     }
   },
 });
 
-export const { setSpeed, setGravity, reset, addPoints } = optionsSlice.actions;
+export const { setSpeed, setGravity, reset, addPoints, resetPoints } = optionsSlice.actions;
 
 export default optionsSlice.reducer;

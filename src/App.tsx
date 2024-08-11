@@ -5,6 +5,7 @@ import './style/Style.css'
 import './style/Animations.css'
 import './style/BirdStyle.css'
 import PointsDisplay from './Components/PointsDisplay'
+import RestartButton from './Components/RestartButton'
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
     <Titolo/>
     <PointsDisplay/>
     <Frame/>
+    <RestartButton/>
     <OptionTab/>
     </div>
   )

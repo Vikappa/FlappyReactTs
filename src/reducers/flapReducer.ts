@@ -41,10 +41,13 @@ const birdSlice = createSlice({
     },
     setGameover(state){
         state.gameover = true;
+    },
+    setRestart(state){
+        state.gameover = false;
     }
   }
 })
 
-export const { doFlap, flapDown, flapUp, setGameover } = birdSlice.actions;
+export const { doFlap, flapDown, flapUp, setGameover, setRestart} = birdSlice.actions;
 
 export default birdSlice.reducer;
