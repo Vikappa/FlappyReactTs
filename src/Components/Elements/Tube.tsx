@@ -1,11 +1,23 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import React from 'react';
+import { useSelector } from "react-redux";
+import { RootType } from "../../store";
 
 export interface TubeProps  {
-    screenHeight: number
+    screenHeight: number,
+    id: number,
 }
 
-const Tube: React.FC<TubeProps> = ({screenHeight}) => {
+const Tube: React.FC<TubeProps> = ({screenHeight, id}) => {
+
+    // const speed = useSelector((state:RootType)=>state.options.speed)
+    // const gameover = useSelector((state:RootType)=>state.flapflap.gameover)
+    // const storedY = useSelector((state:RootType)=>state.bird.Y)
+    const storedX = useSelector((state:RootType)=>state.bird.X)
+    const points = useSelector((state:RootType)=>state.options.points)
+
+    const thisOnDom = useRef(document.getElementById(`tube${id}`));
+
     const EMPTY_SPACE = 409;
 
     const [topLength, setTopLength] = useState<number[]>([]);
@@ -35,27 +47,36 @@ const Tube: React.FC<TubeProps> = ({screenHeight}) => {
         }
     }, [screenHeight]);
 
+    useEffect(() => {
+        if (thisOnDom.current) {
+            thisOnDom.current.style.left = `${storedX}px`
+        }
+    }, [points])
+    
+
     return (
-        <div className="tube-wrapper">
+        <div className="tube-wrapper"
+        id={`id${id}`}
+        >
             <div className="top-tube">
                 {topLength.length > 0 ?
                 topLength.map((item) => {
                         return (
-                            <img className="top-tube-slice" src="/public/assets/img/base.png" key={item}/>
+                            <img className="top-tube-slice" src="/assets/img/base.png" key={item}/>
                         )
                     })
                     
                     :
                     ""
                 }
-                {topLength.length > 0 && <img className="topslice" src="/public/assets/img/top.png"/>}
+                {topLength.length > 0 && <img className="topslice" src="/assets/img/top.png"/>}
             </div>
             <div className="bottom-tube" id="bottomTubeID">
-            {bottomLength.length > 0 && <img className="topslice" src="/public/assets/img/top.png"/>}
+            {bottomLength.length > 0 && <img className="topslice" src="/assets/img/top.png"/>}
             {bottomLength.length > 0 ?
                 bottomLength.map((item) => {
                         return (
-                            <img className="bottom-tube-slice" src="/public/assets/img/base.png" key={item}/>
+                            <img className="bottom-tube-slice" src="/assets/img/base.png" key={item}/>
                         )
                     })
                     :

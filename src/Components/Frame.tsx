@@ -89,7 +89,7 @@ const Frame = () => {
         <div id="frame">
         <Bird x={storedX} y={storedY}/>
         <GameScreen handleFlapUp={handleFlapUp} />
-        <Tube screenHeight={frameY}/>
+        <Tube screenHeight={frameY} id={1}/>
         </div>
     )
 }
