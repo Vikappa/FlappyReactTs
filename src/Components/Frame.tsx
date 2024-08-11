@@ -55,6 +55,9 @@ const Frame = () => {
 
           if(storedY >= frameY*85/100){
 
+            document.documentElement.style.setProperty('--background-speed', `${0}s`)
+            document.documentElement.style.setProperty('--floor-speed', `${0}s`)
+
             dispatch(setGameover())
             return
   
