@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { addPoints } from "../reducers/optionsSlice";
 import { useEffect } from "react";
 import { setPosition } from "../reducers/birdSlice";
-import { flapDown, flapUp } from "../reducers/flapReducer";
+import { flapDown, flapUp, setGameover } from "../reducers/flapReducer";
 
 const Frame = () => {
     const dispatch = useDispatch()
@@ -17,10 +17,11 @@ const Frame = () => {
     const gravity = useSelector((state:RootType)=>state.options.gravity)
     const flap = useSelector((state:RootType)=>state.flapflap.flap)
     const flapPower = useSelector((state:RootType)=>state.flapflap.flapPower)
+    const gameover = useSelector((state:RootType)=>state.flapflap.gameover)
 
     const handleFlapUp = () => {
       console.log('flap up')
-      if(storedX >= 90 ){
+      if(storedX >= 90 && !gameover ){
         dispatch(flapUp())
       }
     }
@@ -52,6 +53,10 @@ const Frame = () => {
         }
       }
 
+      if(storedY > 410){
+        dispatch(setGameover())
+        return
+      }
       const timer = setTimeout(() => {
         dispatch(addPoints(speed/2.5*gravity))
       }, 18)

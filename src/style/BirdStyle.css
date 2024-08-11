@@ -4,3 +4,22 @@
     -webkit-transform: scale(1, -1) rotate(20deg) scaleY(1.2);
     transform: scale(1, -1) rotate(20deg) scaleY(1.2);
 }
+
+
+.falldown-animation {
+    animation: riseAndFallWithFastSpin 3s linear forwards;
+}
+
+@keyframes riseAndFallWithFastSpin {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+    15% {
+        transform: translateY(-10vh) rotate(1440deg);
+    }
+    100% {
+        transform: translateY(100vh) rotate(8760deg);
+    }
+}
+
+

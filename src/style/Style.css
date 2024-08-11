@@ -111,6 +111,8 @@ html{
 #frame{
     margin: 5vh auto;
     margin-top: 0;
+    max-width: 100vh;
+    max-height: auto;
     height: 65vh;
     width: 65vh;
     background-color: white;

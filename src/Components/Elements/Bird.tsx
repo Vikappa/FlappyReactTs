@@ -13,7 +13,8 @@ interface BirdProps {
 const Bird: React.FC<BirdProps> = ({ x, y }) => {
 
     const flap = useSelector((state:RootType)=>state.flapflap.flap)
-
+    const gameover = useSelector((state:RootType)=>state.flapflap.gameover)
+    
     return (
         <div
             className="bird-container"
@@ -27,7 +28,7 @@ const Bird: React.FC<BirdProps> = ({ x, y }) => {
             <img
                 src={birdImageFile}
                 alt="bird"
-                className="bird-image"
+                className={`bird-image ${gameover && `falldown-animation`}`}
                 style={{
                     width: '40px',
                     height: '30px',
@@ -52,7 +53,7 @@ const Bird: React.FC<BirdProps> = ({ x, y }) => {
                 :
                 <img
                 src={wingImageFile}
-                className='wing-image '
+                className={`wing-image ${gameover && `falldown-animation`}`}
                 style={{
                     top: 0,
                     left: 0,

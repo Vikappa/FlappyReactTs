@@ -3,16 +3,19 @@ import { createSlice } from '@reduxjs/toolkit';
 export interface flapInterface {
   flap: boolean;
   flapPower: number;
+  gameover:boolean
 }
 
 export interface InitialFlapState {
   flap: boolean;
   flapPower: number;
+  gameover:boolean  
 }
 
 const initialWingPosition: InitialFlapState = {
     flap:false,
-    flapPower:0
+    flapPower:0,
+    gameover:false
 };
 
 const birdSlice = createSlice({
@@ -35,10 +38,13 @@ const birdSlice = createSlice({
         if(state.flapPower == 0){
         state.flap = false
         }
+    },
+    setGameover(state){
+        state.gameover = true;
     }
   }
 })
 
-export const { doFlap, flapDown, flapUp } = birdSlice.actions;
+export const { doFlap, flapDown, flapUp, setGameover } = birdSlice.actions;
 
 export default birdSlice.reducer;
