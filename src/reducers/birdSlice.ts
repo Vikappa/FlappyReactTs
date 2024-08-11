@@ -20,8 +20,14 @@ const birdSlice = createSlice({
   initialState,
   reducers: {
     setPosition: (state, action: PayloadAction<positionPayload>) => {
+      if(action.payload.Y < 0){
+        state.Y = 0
+        state.X = action.payload.X;     
+      } else {
         state.X = action.payload.X;
         state.Y = action.payload.Y;
+      }
+        
     }
   },
 });
