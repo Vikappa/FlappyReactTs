@@ -28,11 +28,12 @@ const Frame = () => {
     }, [])
 
     const handleFlapUp = () => {
-      if(!gameover && storedX >= frameX/5)
+      if(!gameover && storedX >= frameX/5){
       dispatch(setPosition({X:storedX, Y:storedY-flapPower*2-gravity}))
          dispatch(flapUp())
     }
-
+  }
+    
     useEffect(() => {
 
     if(storedX <= frameX/10){
