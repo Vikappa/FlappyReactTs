@@ -20,7 +20,9 @@ const Frame = () => {
 
     const handleFlapUp = () => {
       console.log('flap up')
-      dispatch(flapUp())
+      if(storedX >= 90 ){
+        dispatch(flapUp())
+      }
     }
 
     useEffect(() => {

@@ -12,7 +12,7 @@ export interface InitialBirdPositionState {
 
 const initialState: InitialBirdPositionState = {
   X: 0,
-  Y: 220,
+  Y: 80,
 };
 
 const birdSlice = createSlice({
