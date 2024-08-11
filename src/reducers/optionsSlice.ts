@@ -7,7 +7,7 @@ export interface InitialStateInterface {
 }
 
 const initialState: InitialStateInterface = {
-  speed: 8,
+  speed: 6,
   gravity: 1,
   points: 0
 };
@@ -18,8 +18,8 @@ const optionsSlice = createSlice({
   reducers: {
     setSpeed: (state, action: PayloadAction<number>) => {
       state.speed = action.payload;
-      if (state.speed < 6) {
-        state.speed = 6;
+      if (state.speed < 3) {
+        state.speed = 3;
       }
       if (state.speed > 10) {
         state.speed = 10;

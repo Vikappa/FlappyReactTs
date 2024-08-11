@@ -36,42 +36,53 @@ const Frame = () => {
     
     useEffect(() => {
 
-    if(storedX <= frameX/10){
+    if(storedX <= frameX/12){
 
       dispatch(setPosition({X:storedX+speed/2, Y:storedY+gravity}))
 
     } else {
 
-      if(storedX <= frameX/5){
+      if(storedX <= frameX/6){
 
-        dispatch(setPosition({X:storedX+speed/3, Y:storedY+gravity}))
+        dispatch(setPosition({X:storedX+speed/3, Y:storedY+gravity*2}))
 
       } else {
 
-        if(storedY >= frameY*8/10){
-
-          dispatch(setGameover())
-          return
+        if(storedX <= frameX/4){
+          dispatch(setPosition({X:storedX+speed/4, Y:storedY+gravity*3}))
 
         } else {
 
-          if(flap){
-            dispatch(setPosition({X:storedX, Y:storedY-flapPower}))
-          } else {
-            dispatch(setPosition({X:storedX, Y:storedY+gravity-flapPower}))
-          }
+          if(storedY >= frameY*85/100){
 
-          dispatch(flapDown(gravity/3))
+            dispatch(setGameover())
+            return
+  
+          } else {
+  
+            if(flap){
+              dispatch(setPosition({X:storedX, Y:storedY-flapPower}))
+            } else {
+              dispatch(setPosition({X:storedX, Y:storedY+gravity-flapPower}))
+            }
+  
+            dispatch(flapDown(gravity/3))
+          }
         }
-      }
+
+        }
 
     }
 
 
       const timer = setTimeout(() => {
+
         dispatch(addPoints(speed/gravity))
+
       }, 20)
+
       return () => clearTimeout(timer)
+
     }, [points])
     
     return(
