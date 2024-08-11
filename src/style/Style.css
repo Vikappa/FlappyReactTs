@@ -51,6 +51,8 @@ html{
     display: flex;
     flex-direction: column;
     padding: 10px;
+    transform: scale(2) translate(25%, 25%);
+
 }
 
 .opt-container{
