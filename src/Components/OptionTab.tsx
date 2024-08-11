@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { setGravity, setSpeed } from '../reducers/optionsSlice';
 import { AppDispatch, RootType } from '../store';
 import { useSelector, useDispatch } from 'react-redux';
@@ -8,11 +9,11 @@ const OptionTab = () =>{
     const dispatch = useDispatch<AppDispatch>();
 
     const increaseSpeed = () => {
-        dispatch(setSpeed(speed - 1));
+        dispatch(setSpeed(speed + 1));
     };
 
     const decreaseSpeed = () => {
-        dispatch(setSpeed(speed + 1));
+        dispatch(setSpeed(speed - 1));
     };
 
     const increaseGravity = () => {
@@ -22,7 +23,11 @@ const OptionTab = () =>{
     const decreaseGravity = () => {
         dispatch(setGravity(parseFloat((gravity * 0.9).toFixed(1))));
     };
-    
+
+    useEffect(() => {
+        document.documentElement.style.setProperty('--background-speed', `${(15-speed)/3}s`);
+        document.documentElement.style.setProperty('--floor-speed', `${(15-speed)/4}s`);
+    }, [speed]);
 
 
     return(
@@ -40,7 +45,7 @@ const OptionTab = () =>{
                 <p
                 style={{
                     userSelect: 'none',
-                }}>{13-speed}</p>
+                }}>{speed}</p>
             <button onClick={increaseSpeed} className='option-button'>+</button>
             </div>
 
