@@ -141,3 +141,30 @@ html{
 .pointsH1{
     color: white;
 }
+
+.restartButton-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.restartButton{
+    padding: 5px 15px;
+    font-size: 2rem;
+    background-color: blue;
+    font-family: 'Pixelify Sans', sans-serif;
+    color: white;
+    -webkit-box-shadow: 10px 5px 28px -15px rgba(255,255,255,1);
+    -moz-box-shadow: 10px 5px 28px -15px rgba(255,255,255,1);
+    box-shadow: 10px 5px 28px -15px rgba(255,255,255,1);
+}
+
+.restartButton:hover{
+    background-color: white;
+    color: black;
+}
+
+.restartButton:active{
+    background-color: white;
+    color: red;
+}

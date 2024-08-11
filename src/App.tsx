@@ -14,7 +14,9 @@ function App() {
     <Titolo/>
     <PointsDisplay/>
     <Frame/>
+    <div className='restartButton-wrapper'>
     <RestartButton/>
+    </div>
     <OptionTab/>
     </div>
   )
