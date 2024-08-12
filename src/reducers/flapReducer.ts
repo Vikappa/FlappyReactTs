@@ -3,19 +3,19 @@ import { createSlice } from '@reduxjs/toolkit';
 export interface flapInterface {
   flap: boolean;
   flapPower: number;
-  gameover:boolean
+  gameover:boolean | null
 }
 
 export interface InitialFlapState {
   flap: boolean;
   flapPower: number;
-  gameover:boolean  
+  gameover:boolean | null 
 }
 
 const initialWingPosition: InitialFlapState = {
     flap:false,
     flapPower:0,
-    gameover:false
+    gameover: null
 };
 
 const birdSlice = createSlice({

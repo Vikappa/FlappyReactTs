@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { addPoints } from "../reducers/optionsSlice";
 import { useEffect, useState } from "react";
 import { setPosition } from "../reducers/birdSlice";
-import { flapDown, flapUp, setGameover } from "../reducers/flapReducer";
+import { flapDown, flapUp, setGameover, setRestart } from "../reducers/flapReducer";
 import Tube, { TubeProps } from '../Components/Elements/Tube'
 
 const Frame = () => {
@@ -27,6 +27,7 @@ const Frame = () => {
     useEffect(() => {
         setFrameX(document.getElementById('frame')?.offsetWidth || 0)
         setFrameY(document.getElementById('frame')?.offsetHeight || 0)
+        dispatch(setRestart())
     }, [])
 
     const handleFlapUp = () => {
@@ -37,7 +38,7 @@ const Frame = () => {
     }
 
     useEffect(() => {
-
+        
         if (storedX <= frameX / 12) {
             dispatch(setPosition({ X: storedX + speed / 2, Y: storedY + gravity }))
         } else if (storedX <= frameX / 6) {
@@ -45,6 +46,7 @@ const Frame = () => {
         } else if (storedX <= frameX / 4) {
             dispatch(setPosition({ X: storedX + speed / 4, Y: storedY + gravity * 3 }))
         } else {
+
             if (storedY >= frameY * 85 / 100) {
                 document.documentElement.style.setProperty('--background-speed', `${0}s`)
                 document.documentElement.style.setProperty('--floor-speed', `${0}s`)
@@ -74,7 +76,7 @@ const Frame = () => {
     const addNewTube = () => {
 
         setTubes(prevTubes => {
-            const newTubes = [...prevTubes];
+            const newTubes = [...prevTubes]
 
             if (newTubes.length > 2) {
                 newTubes.shift(); // Rimuovi il tubo più vecchio
@@ -86,30 +88,27 @@ const Frame = () => {
                 screenHeight: frameY
             };
 
-            newTubes.push(newTube);
+            newTubes.push(newTube)
 
-            return newTubes;
+            return newTubes
         })
     }
 
     useEffect(() => {
-      let tubeInterval: NodeJS.Timeout | undefined;
+      let tubeInterval: NodeJS.Timeout | undefined
       if (gameover) {
-        if (tubeInterval) {
-          clearInterval(tubeInterval);
-        }
-        return;
+        return
       } else {
         tubeInterval = setInterval(() => {
-          addNewTube();
-        }, 2000);
+          addNewTube()
+        }, 2000)
         return () => {
           if (tubeInterval) {
-            clearInterval(tubeInterval);
+            clearInterval(tubeInterval)
           }
         };
       }
-    }, [gameover]);
+    }, [gameover])
 
     return (
         <div id="frame">

@@ -18,7 +18,8 @@ const Tube: React.FC<TubeProps> = ({screenHeight, id}) => {
 
     const topSizeRef = useRef(Math.random() * 50 + 2);
     const topSize = topSizeRef.current;
-    const bottomSize = screenHeight - topSize - EMPTY_SPACE;
+    const bottomSizeRef = useRef((screenHeight?screenHeight:450) - topSize - EMPTY_SPACE);
+    const bottomSize = bottomSizeRef.current;
 
     const [topLength, setTopLength] = useState<number[]>([])
     const [bottomLength, setBottomLength] = useState<number[]>([])
@@ -66,7 +67,7 @@ const Tube: React.FC<TubeProps> = ({screenHeight, id}) => {
             </div>
             <div className="bottom-tube" id="bottomTubeID"
             style={{
-                top: `${  (topSize*4)+EMPTY_SPACE/1.75   }px`
+                top: `${(topSize*4)+EMPTY_SPACE/1.75}px`
             }}
             >
             {bottomLength.length > 0 && <img className="topslice" src="/assets/img/top.png"/>}
