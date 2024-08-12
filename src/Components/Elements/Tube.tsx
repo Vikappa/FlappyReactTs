@@ -2,6 +2,8 @@ import { useEffect, useState, useRef } from "react";
 import React from 'react';
 import { useSelector } from "react-redux";
 import { RootType } from "../../store";
+import { useDispatch } from "react-redux";
+import { setGameover } from "../../reducers/flapReducer";
 
 export interface TubeProps  {
     screenHeight: number,
@@ -10,6 +12,7 @@ export interface TubeProps  {
 
 const Tube: React.FC<TubeProps> = ({screenHeight, id}) => {
 
+    const dispatch = useDispatch()
     const speed = useSelector((state:RootType)=>state.options.speed)
     const [deltaX, setDeltaX] = useState(800)
     const points = useSelector((state:RootType)=>state.options.points)
@@ -20,6 +23,8 @@ const Tube: React.FC<TubeProps> = ({screenHeight, id}) => {
     const topSize = topSizeRef.current;
     const bottomSizeRef = useRef((screenHeight?screenHeight:450) - topSize - EMPTY_SPACE);
     const bottomSize = bottomSizeRef.current;
+    const birdX = useSelector((state:RootType)=>state.bird.X)
+    const birdY = useSelector((state:RootType)=>state.bird.Y)
 
     const [topLength, setTopLength] = useState<number[]>([])
     const [bottomLength, setBottomLength] = useState<number[]>([])
@@ -40,10 +45,24 @@ const Tube: React.FC<TubeProps> = ({screenHeight, id}) => {
 
     }, [screenHeight, topSize, bottomSize])
 
-
+ const checkCollision = () => {
+        const tubeLeftEdge = deltaX;
+        const tubeRightEdge = deltaX + 54;
+        if (
+            birdX >= tubeLeftEdge &&
+            birdX <= tubeRightEdge &&
+            (
+                birdY <= topSize * 4 +30 || 
+                birdY >= bottomSize * 4 -30
+            )
+        ) {
+            dispatch(setGameover())
+        }
+    }
 
     useEffect(() => {
         setDeltaX(deltaX - speed)
+        checkCollision()
     }, [points])    
 
     return (
