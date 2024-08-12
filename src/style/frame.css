@@ -3,6 +3,10 @@
     --floor-speed: 4s;
   }
 
+  *{
+    user-select: none;
+  }
+
 #frame{
     position: relative;
     overflow: hidden;
@@ -24,7 +28,7 @@
     width: 50%;
     height: 100%;
     float: left;
-    background-image: url(/public/assets/img/background.png);
+    background-image: url(/assets/img/background.png);
     animation: animazioneBackground var(--background-speed) linear infinite;
     margin-left: -1px;
     background-size: clip;
@@ -32,7 +36,7 @@
 }
 
 .movingroad1, .movingroad2 {
-    background-image: url(/public/assets/img/154256.png);
+    background-image: url(/assets/img/154256.png);
     position: absolute;
     width: 50%;
     height: 100%;

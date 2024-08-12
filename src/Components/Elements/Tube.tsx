@@ -17,7 +17,7 @@ const Tube: React.FC<TubeProps> = ({screenHeight, id}) => {
     const points = useSelector((state:RootType)=>state.options.points)
 
 
-    const EMPTY_SPACE = 409
+    const EMPTY_SPACE = 400
 
     const [topLength, setTopLength] = useState<number[]>([])
     const [bottomLength, setBottomLength] = useState<number[]>([])
