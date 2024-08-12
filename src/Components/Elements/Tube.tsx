@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import React from 'react';
 import { useSelector } from "react-redux";
 import { RootType } from "../../store";
@@ -10,22 +10,21 @@ export interface TubeProps  {
 
 const Tube: React.FC<TubeProps> = ({screenHeight, id}) => {
 
-    // const speed = useSelector((state:RootType)=>state.options.speed)
+    const speed = useSelector((state:RootType)=>state.options.speed)
     // const gameover = useSelector((state:RootType)=>state.flapflap.gameover)
     // const storedY = useSelector((state:RootType)=>state.bird.Y)
-    const storedX = useSelector((state:RootType)=>state.bird.X)
+    // const storedX = useSelector((state:RootType)=>state.bird.X)
     const points = useSelector((state:RootType)=>state.options.points)
 
-    const thisOnDom = useRef(document.getElementById(`tube${id}`));
 
-    const EMPTY_SPACE = 409;
+    const EMPTY_SPACE = 409
 
-    const [topLength, setTopLength] = useState<number[]>([]);
-    const [bottomLength, setBottomLength] = useState<number[]>([]);
+    const [topLength, setTopLength] = useState<number[]>([])
+    const [bottomLength, setBottomLength] = useState<number[]>([])
 
     useEffect(() => {
-        const topSize = Math.random() * 50 + 2;
-        const bottomSize = screenHeight - topSize - EMPTY_SPACE;
+        const topSize = Math.random() * 50 + 2
+        const bottomSize = screenHeight - topSize - EMPTY_SPACE
 
         const topArray: number[] = []
         const bottomArray: number[] = []
@@ -34,25 +33,28 @@ const Tube: React.FC<TubeProps> = ({screenHeight, id}) => {
             topArray.push(i);
         }
         for (let i = 0; i < bottomSize; i++) {
-            bottomArray.push(i);
+            bottomArray.push(i)
         }
 
-        setTopLength(topArray);
-        setBottomLength(bottomArray);
+        setTopLength(topArray)
+        setBottomLength(bottomArray)
 
-        console.log(topArray, bottomArray);
-        const bottomTube = document.getElementById('bottomTubeID');
+        const bottomTube = document.getElementById('bottomTubeID')
         if (bottomTube) {
-            bottomTube.style.top = `${ EMPTY_SPACE +20 }px`;
+            bottomTube.style.top = `${ EMPTY_SPACE +20 }px`
         }
-    }, [screenHeight]);
+    }, [screenHeight])
 
     useEffect(() => {
-        if (thisOnDom.current) {
-            thisOnDom.current.style.left = `${storedX}px`
+        const searchitself = document.getElementById(`id${id}`)
+        console.log(searchitself?.style.left)
+
+        if (searchitself) {
+            const currentLeft = parseInt(searchitself.style.left) || 0
+            searchitself.style.left = `${currentLeft - speed}px`
         }
-    }, [points])
-    
+
+    }, [points, id, speed])    
 
     return (
         <div className="tube-wrapper"
