@@ -50,7 +50,9 @@ const Frame = () => {
                 document.documentElement.style.setProperty('--floor-speed', `${0}s`)
 
                 dispatch(setGameover())
+
                 return
+
             } else {
                 if (flap) {
                     dispatch(setPosition({ X: storedX, Y: storedY - flapPower }))
@@ -62,7 +64,7 @@ const Frame = () => {
         }
 
         const timer = setTimeout(() => {
-            dispatch(addPoints(speed / gravity))
+            dispatch(addPoints(speed / (10-gravity)))
         }, 20)
 
         return () => clearTimeout(timer)
@@ -74,7 +76,7 @@ const Frame = () => {
         setTubes(prevTubes => {
             const newTubes = [...prevTubes];
 
-            if (newTubes.length > 10) {
+            if (newTubes.length > 2) {
                 newTubes.shift(); // Rimuovi il tubo più vecchio
             }
 
@@ -91,13 +93,21 @@ const Frame = () => {
     }
 
     useEffect(() => {
-      if(gameover){
-        return
+      let tubeInterval: NodeJS.Timeout | undefined;
+      if (gameover) {
+        if (tubeInterval) {
+          clearInterval(tubeInterval);
+        }
+        return;
       } else {
-        const tubeInterval = setInterval(() => {
-            addNewTube();
-        }, 2000)
-        return () => clearInterval(tubeInterval);
+        tubeInterval = setInterval(() => {
+          addNewTube();
+        }, 2000);
+        return () => {
+          if (tubeInterval) {
+            clearInterval(tubeInterval);
+          }
+        };
       }
     }, [gameover]);
 

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import React from 'react';
 import { useSelector } from "react-redux";
 import { RootType } from "../../store";
@@ -11,21 +11,19 @@ export interface TubeProps  {
 const Tube: React.FC<TubeProps> = ({screenHeight, id}) => {
 
     const speed = useSelector((state:RootType)=>state.options.speed)
-    // const gameover = useSelector((state:RootType)=>state.flapflap.gameover)
-    // const storedY = useSelector((state:RootType)=>state.bird.Y)
-    // const storedX = useSelector((state:RootType)=>state.bird.X)
+    const [deltaX, setDeltaX] = useState(800)
     const points = useSelector((state:RootType)=>state.options.points)
 
+    const EMPTY_SPACE = 350
 
-    const EMPTY_SPACE = 400
+    const topSizeRef = useRef(Math.random() * 50 + 2);
+    const topSize = topSizeRef.current;
+    const bottomSize = screenHeight - topSize - EMPTY_SPACE;
 
     const [topLength, setTopLength] = useState<number[]>([])
     const [bottomLength, setBottomLength] = useState<number[]>([])
 
     useEffect(() => {
-        const topSize = Math.random() * 50 + 2
-        const bottomSize = screenHeight - topSize - EMPTY_SPACE
-
         const topArray: number[] = []
         const bottomArray: number[] = []
 
@@ -39,26 +37,20 @@ const Tube: React.FC<TubeProps> = ({screenHeight, id}) => {
         setTopLength(topArray)
         setBottomLength(bottomArray)
 
-        const bottomTube = document.getElementById('bottomTubeID')
-        if (bottomTube) {
-            bottomTube.style.top = `${ EMPTY_SPACE +20 }px`
-        }
-    }, [screenHeight])
+    }, [screenHeight, topSize, bottomSize])
+
+
 
     useEffect(() => {
-        const searchitself = document.getElementById(`id${id}`)
-        console.log(searchitself?.style.left)
-
-        if (searchitself) {
-            const currentLeft = parseInt(searchitself.style.left) || 0
-            searchitself.style.left = `${currentLeft - speed}px`
-        }
-
-    }, [points, id, speed])    
+        setDeltaX(deltaX - speed)
+    }, [points])    
 
     return (
         <div className="tube-wrapper"
         id={`id${id}`}
+        style={{
+            left: `${deltaX}px`
+        }}
         >
             <div className="top-tube">
                 {topLength.length > 0 ?
@@ -67,13 +59,16 @@ const Tube: React.FC<TubeProps> = ({screenHeight, id}) => {
                             <img className="top-tube-slice" src="/assets/img/base.png" key={item}/>
                         )
                     })
-                    
                     :
                     ""
                 }
                 {topLength.length > 0 && <img className="topslice" src="/assets/img/top.png"/>}
             </div>
-            <div className="bottom-tube" id="bottomTubeID">
+            <div className="bottom-tube" id="bottomTubeID"
+            style={{
+                top: `${  (topSize*4)+EMPTY_SPACE/1.75   }px`
+            }}
+            >
             {bottomLength.length > 0 && <img className="topslice" src="/assets/img/top.png"/>}
             {bottomLength.length > 0 ?
                 bottomLength.map((item) => {
