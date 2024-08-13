@@ -48,12 +48,13 @@ const Tube: React.FC<TubeProps> = ({screenHeight, id}) => {
  const checkCollision = () => {
         const tubeLeftEdge = deltaX;
         const tubeRightEdge = deltaX + 54;
+        console.log(topSize  +EMPTY_SPACE -bottomSize, birdY)
         if (
             birdX >= tubeLeftEdge &&
             birdX <= tubeRightEdge &&
             (
                 birdY <= topSize * 4 +30 || 
-                birdY >= bottomSize * 4 -30
+                birdY >= topSize  +EMPTY_SPACE -bottomSize
             )
         ) {
             dispatch(setGameover())
