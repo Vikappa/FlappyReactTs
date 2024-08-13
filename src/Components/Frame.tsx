@@ -3,7 +3,7 @@ import Bird from "./Elements/Bird"
 import GameScreen from "./GameScreen"
 import { RootType } from '../store';
 import { useDispatch } from "react-redux";
-import { addPoints } from "../reducers/optionsSlice";
+import { addPoints, setPointsEditable } from "../reducers/optionsSlice";
 import { useEffect, useState } from "react";
 import { setPosition } from "../reducers/birdSlice";
 import { flapDown, flapUp, setGameover, setRestart } from "../reducers/flapReducer";
@@ -40,6 +40,7 @@ const Frame = () => {
     useEffect(() => {
         
         if (storedX <= frameX / 12) {
+            dispatch(setPointsEditable(true))
             dispatch(setPosition({ X: storedX + speed / 2, Y: storedY + gravity }))
         } else if (storedX <= frameX / 6) {
             dispatch(setPosition({ X: storedX + speed / 3, Y: storedY + gravity * 2 }))
@@ -84,8 +85,9 @@ const Frame = () => {
 
             // Aggiungi un nuovo tubo con proprietà specifiche
             const newTube: TubeProps = {
-                id: new Date().getTime(),  // Per avere un ID univoco ed evitare re-rendering
-                screenHeight: frameY
+                id: new Date().getTime(),  
+                screenHeight: frameY,
+                screenWidth: frameX,
             };
 
             newTubes.push(newTube)
