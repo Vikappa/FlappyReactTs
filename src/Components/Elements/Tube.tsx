@@ -54,7 +54,7 @@ const Tube: React.FC<TubeProps> = ({screenHeight, id}) => {
             birdX <= tubeRightEdge &&
             (
                 birdY <= topSize * 4 +30 || 
-                birdY >= topSize  +EMPTY_SPACE -bottomSize
+                birdY >= topSize  +EMPTY_SPACE -bottomSize -30
             )
         ) {
             dispatch(setGameover())
